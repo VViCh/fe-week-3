@@ -1,0 +1,226 @@
+:root {
+  --color-secondary: #9d9d9d;
+  --color-tertiary: #c9c9c9;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  user-select: none;
+}
+
+h1 {
+  font-size: 28px;
+  font-weight: 600;
+}
+
+p,
+label,
+input,
+button,
+span {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.container {
+  width: 70%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  margin: 70px auto;
+  border-radius: 12px;
+  background-color: #ffffff;
+  padding: 48px 60px;
+
+  .header {
+    font-family: "Hanken Grotesk", sans-serif;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 60px;
+    gap: 8px;
+
+    p {
+      color: var(--color-secondary);
+    }
+  }
+
+  .createTask {
+    display: grid;
+    grid-template-columns: 4fr 4fr 1fr;
+    gap: 20px;
+
+    .createTaskGroup {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+
+      input {
+        padding: 18px 24px;
+        border: 1px solid var(--border, #ebebeb);
+        border-radius: 8px;
+
+        &::placeholder {
+          color: var(--color-tertiary);
+        }
+      }
+
+      button {
+        padding: 18px 24px;
+        border: none;
+        border-radius: 8px;
+        background-color: #0c51ff;
+        color: #ffffff;
+        cursor: pointer;
+
+        &:hover {
+          background-color: #3766dc;
+        }
+      }
+    }
+  }
+
+  .badge {
+    padding: 8px 12px;
+    border-radius: 8px;
+
+    &.today,
+    &.tomorrow,
+    &.upcoming {
+      position: absolute;
+      right: 8px;
+    }
+
+    &.today {
+      background-color: #e8f4ff;
+      color: #2f46db;
+    }
+
+    &.tomorrow {
+      background-color: #fff7e3;
+      color: #d86c01;
+    }
+
+    &.upcoming {
+      background-color: #e4ffe4;
+      color: #367812;
+    }
+
+    &:not(.today):not(.tomorrow):not(.upcoming) {
+      padding: 4px 8px;
+      background-color: #f6f6f6;
+    }
+  }
+
+  .taskList {
+    font-family: "Inter", sans-serif;
+    margin-top: 30px;
+    width: 100%;
+
+    .dropdownToggle {
+      display: flex;
+      align-items: center;
+      padding: 12px 0;
+      cursor: pointer;
+      gap: 8px;
+
+      .chevronIcon {
+        display: inline-block;
+        transition: transform 0.3s ease;
+
+        &.open {
+          transform: rotate(0deg);
+        }
+
+        &:not(.open) {
+          transform: rotate(-90deg);
+        }
+      }
+
+      .titleText {
+        font-weight: 600;
+        color: #000000;
+      }
+    }
+
+    .taskListContainer {
+      overflow: hidden;
+      transition: max-height 0.6s ease-in-out, opacity 0.5s ease-in-out;
+
+      &.open {
+        max-height: 1000px;
+        opacity: 1;
+      }
+
+      &.closed {
+        max-height: 0;
+        opacity: 0;
+      }
+
+      .taskListItems {
+        display: flex;
+        flex-direction: column;
+        padding-left: 24px;
+        margin-top: 4px;
+        gap: 12px;
+
+        .taskCard {
+          width: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding: 20px;
+          border-radius: 8px;
+          position: relative;
+
+          .taskCheckboxLabel {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+
+            input[type="checkbox"] {
+              width: 18px;
+              height: 18px;
+              cursor: pointer;
+              accent-color: #000000;
+            }
+          }
+
+          &.completed {
+            background-color: #f8f8f8;
+
+            label {
+              text-decoration: line-through;
+              color: #9d9d9d;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 1200px) {
+  .container {
+    width: 85%;
+    padding: 40px 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    width: 95%;
+    padding: 30px 20px;
+  }
+  
+  .container .createTask {
+    grid-template-columns: 1fr;
+  }
+  
+  .container .createTask .createTaskGroup button {
+    width: 100%;
+  }
+}
