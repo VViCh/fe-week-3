@@ -75,6 +75,7 @@ span {
         background-color: #0c51ff;
         color: #ffffff;
         cursor: pointer;
+        transition: background-color 0.1s ease-in-out;
 
         &:hover {
           background-color: #3766dc;
@@ -123,26 +124,31 @@ span {
     .dropdownToggle {
       display: flex;
       align-items: center;
-      padding: 12px 0;
-      cursor: pointer;
-      gap: 8px;
 
-      .chevronIcon {
-        display: inline-block;
-        transition: transform 0.3s ease;
+      .dropdownHeader {
+        display: flex;
+        align-items: center;
+        padding: 12px 0;
+        cursor: pointer;
+        gap: 8px;
 
-        &.open {
-          transform: rotate(0deg);
+        .chevronIcon {
+          display: inline-block;
+          transition: transform 0.3s ease;
+
+          &.open {
+            transform: rotate(0deg);
+          }
+
+          &:not(.open) {
+            transform: rotate(-90deg);
+          }
         }
 
-        &:not(.open) {
-          transform: rotate(-90deg);
+        .title {
+          font-weight: 600;
+          color: #000000;
         }
-      }
-
-      .title {
-        font-weight: 600;
-        color: #000000;
       }
     }
 
@@ -175,6 +181,7 @@ span {
           border-radius: 8px;
           position: relative;
           cursor: pointer;
+          transition: background-color 0.3s ease-in-out;
 
           .taskCheckboxLabel {
             display: flex;
@@ -192,10 +199,14 @@ span {
           &.completed {
             background-color: #f8f8f8;
 
-            label {
+            p {
               text-decoration: line-through;
               color: #9d9d9d;
             }
+          }
+
+          &:hover {
+            background-color: #f0f0f0;
           }
         }
       }
@@ -215,11 +226,11 @@ span {
     width: 95%;
     padding: 30px 20px;
   }
-  
+
   .container .createTask {
     grid-template-columns: 1fr;
   }
-  
+
   .container .createTask .createTaskGroup button {
     width: 100%;
   }
