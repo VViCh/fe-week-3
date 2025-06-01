@@ -4,7 +4,7 @@ import "./App.css";
 import TaskList from "./components/TaskList.jsx";
 
 function App() {
-  const currentDate = new Moment();
+  const [currentDate, setCurrentDate] = useState(new Moment());
   const [tasks, setTasks] = useState([]);
   const [todayTasks, setTodayTasks] = useState([]);
   const [upcomingTasks, setUpcomingTasks] = useState([]);
@@ -49,14 +49,14 @@ function App() {
         isDone: false,
       },
       { id: 8, text: "Tidur", date: new Moment().add(1, "day"), isDone: false },
-      { id: 8, text: "Hidup", date: new Moment().add(1, "day"), isDone: false },
+      { id: 9, text: "Hidup", date: new Moment().add(1, "day"), isDone: false },
       {
-        id: 9,
+        id: 10,
         text: "Panitia Onsite TechnoFest",
         date: new Moment().subtract(5, "days"),
         isDone: true,
       },
-      { id: 10, text: "QC dengan Kezia", date: new Moment(), isDone: false },
+      { id: 11, text: "QC dengan Kezia", date: new Moment(), isDone: false },
     ];
     setTasks(initialTasks);
   }, []);

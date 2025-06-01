@@ -12,15 +12,14 @@ const TaskCard = ({ task, onToggleComplete, status }) => {
   };
 
   return (
-    <div className={`taskCard ${task.isDone ? "completed" : ""}`}>
+    <div className={`taskCard ${task.isDone ? "completed" : ""}`} onClick={() => onToggleComplete(task.id)}>
       <div className="taskCheckboxLabel">
         <input
           type="checkbox"
           id={`task-${task.id}`}
           checked={task.isDone}
-          onChange={() => onToggleComplete(task.id)}
         />
-        <label htmlFor={`task-${task.id}`}>{task.text}</label>
+        <p>{task.text}</p>
       </div>
       <Badge className={status} text={formatDate(task.date, status)} />
     </div>
