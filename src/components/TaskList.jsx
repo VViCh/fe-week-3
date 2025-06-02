@@ -23,8 +23,8 @@ const TaskList = ({ title, count, tasks, onToggleComplete }) => {
 
   return (
     <div className="taskList">
-      <div className="dropdownToggle" onClick={toggleOpen}>
-        <div className="dropdownHeader">
+      <div className="dropdownToggle" >
+        <div className="dropdownHeader" onClick={toggleOpen}>
           <span className={`chevronIcon ${isOpen ? "open" : ""}`}>
             <svg
               xmlns="http://www.w3.org/2000/svg"

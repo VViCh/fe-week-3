@@ -36,5 +36,5 @@ export const initialTasks = [
     date: new Moment().subtract(5, "days"),
     isDone: true,
   },
-  { id: 11, text: "QC dengan Kezia", date: new Moment(), isDone: false },
+  { id: 11, text: "QC dengan Kezia", date: new Moment(), isDone: true },
 ];

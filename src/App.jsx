@@ -6,7 +6,7 @@ import { initialTasks } from "./constants/data.js";
 
 function App() {
   const [currentDate, setCurrentDate] = useState(new Moment());
-  const [tasks, setTasks] = useState([]);
+  const [tasks, setTasks] = useState(initialTasks);
   const [todayTasks, setTodayTasks] = useState([]);
   const [upcomingTasks, setUpcomingTasks] = useState([]);
   const [formData, setFormData] = useState({
@@ -14,20 +14,6 @@ function App() {
     dueDate: currentDate.format("YYYY-MM-DD"),
     isDone: false,
   });
-
-  useEffect(() => {
-    const today = tasks.filter((task) => task.date.isSame(currentDate, "day"));
-    const upcoming = tasks
-      .filter((task) => task.date.isAfter(currentDate, "day"))
-      .sort((a, b) => a.date - b.date);
-
-    setTodayTasks(today);
-    setUpcomingTasks(upcoming);
-  }, [tasks]);
-
-  useEffect(() => {
-    setTasks(initialTasks);
-  }, []);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -50,6 +36,14 @@ function App() {
     };
 
     setTasks([...tasks, newTask]);
+
+    const today = tasks.filter((task) => task.date.isSame(currentDate, "day"));
+    const upcoming = tasks
+      .filter((task) => task.date.isAfter(currentDate, "day"))
+      .sort((a, b) => a.date - b.date);
+
+    setTodayTasks(today);
+    setUpcomingTasks(upcoming);
 
     setFormData({
       task: "",
